@@ -12,7 +12,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 /**
  * Created by mberhe on 2/14/19.
  */
-//@Configuration
+@Configuration
 public class ThymeleafConfig {
     @Bean
     public ClassLoaderTemplateResolver templateResolver() {

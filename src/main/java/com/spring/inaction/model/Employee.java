@@ -1,5 +1,7 @@
 package com.spring.inaction.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,6 +16,7 @@ public class Employee implements Serializable{
     @Id
     @SequenceGenerator(name="pk_sequence",sequenceName="entity_id_seq", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
+    @JsonIgnore
     private int id;
 
     private String firstName;

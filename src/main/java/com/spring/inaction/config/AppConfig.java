@@ -13,11 +13,9 @@ import javax.sql.DataSource;
 /**
  * Created by mberhe on 2/13/19.
  */
-//@EnableWebMvc
+@EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.spring.inaction"},excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = ThymeleafConfig.class)
-})
+@ComponentScan(basePackages = {"com.spring.inaction"})
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 
