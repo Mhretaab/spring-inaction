@@ -1,18 +1,23 @@
 package com.spring.inaction.config;
 
+import com.spring.inaction.config.thymeleaf.ThymeleafConfig;
 import com.spring.inaction.pojo.HelloWorld;
 import com.spring.inaction.pojo.HelloWorldImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
 /**
  * Created by mberhe on 2/13/19.
  */
+//@EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.spring.inaction"})
+@ComponentScan(basePackages = {"com.spring.inaction"},excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = ThymeleafConfig.class)
+})
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 
