@@ -33,7 +33,7 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(classes = {TestConfig.class})// Indicates which XML files contain the ApplicationContext.
 @DirtiesContext //indicate that the application context cached should be removed and reloaded after each test run.
 @Transactional
-//@Commit//equivalent to setting the default rollback mode to false
+@Commit//equivalent to setting the default rollback mode to false
 public class EmployeeServiceTest {
     /*@TransactionConfiguration
     @BeforeTransaction

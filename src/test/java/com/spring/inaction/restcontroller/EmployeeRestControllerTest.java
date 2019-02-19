@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,21 +18,24 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by mberhe on 2/15/19.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+/*@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfig.class})
-@WebAppConfiguration
+@WebAppConfiguration*/
+@RunWith(MockitoJUnitRunner.class)
 public class EmployeeRestControllerTest {
-    @Autowired
-    WebApplicationContext wac;
+    /*@Autowired
+    WebApplicationContext wac;*/
 
     @Mock
     EmployeeService employeeService;
@@ -66,6 +70,9 @@ public class EmployeeRestControllerTest {
         mockMvc
                 .perform(MockMvcRequestBuilders.get("/api/employees")
                         .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                /*.andExpect(MockMvcResultMatchers.jsonPath("firstName", new ))*/
                 .andDo(MockMvcResultHandlers.print());
     }
 
